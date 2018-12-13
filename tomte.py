@@ -35,5 +35,7 @@ for (fran, email),(to, _) in zip(Personer, Personer[1:]+Personer[:1]):
 input("Press Enter to send mails...")
 
 for email, msg in to_send:
-    server.sendmail("tomten@gmail.com", email, msg)
+    m = MIMEText(msg.encode('utf-8'), 'plain', 'utf-8')
+    m['Subject'] = Header("Tomtemail", 'utf-8')
+    server.sendmail("tomten@gmail.com", email, m)
 
